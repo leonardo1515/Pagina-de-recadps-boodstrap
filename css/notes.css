@@ -1,0 +1,11 @@
+.container-layout-table{
+    background-color: aquamarine;
+}
+
+th,td{
+    width: 100vh;
+}
+
+form{
+    width: 150vh;
+  }
