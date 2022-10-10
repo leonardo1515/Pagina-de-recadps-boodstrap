@@ -1,4 +1,43 @@
+body{
+  background-image: url(/img/bg.jpg);
+  background-size: cover;
+}
 .container-layout{
   height: 100vh;
-  background-color: aquamarine;
+}
+.bag{
+  background-color: rgb(199, 191, 191);
+}
+.opaci{
+  background: rgba(121, 119, 119, 0.7);
+
+}
+
+.animation{
+  width: 80vh;
+  height: 55vh;
+  position: relative;
+  animation: ease-out up-dow 2s;
+}
+
+@keyframes up-dow {
+  0%{
+    bottom: 800px;
+  }
+ 45%{
+    bottom: 600px;
+  }
+  60%{
+    bottom: 0px;
+  }
+  65%{
+    bottom: 40px;
+  }
+  70%{
+    bottom: 0px;
+  }
+  100%{
+    bottom: 0px;
+  }
+  
 }

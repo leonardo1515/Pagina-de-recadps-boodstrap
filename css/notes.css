@@ -1,3 +1,8 @@
+body{
+    background-image: url(/img/bg.jpg);
+    background-size: cover;
+    color: black;
+  }
 .container-layout-table{
     background-color: aquamarine;
 }
@@ -7,6 +12,7 @@ form{
 }
 
 th,td{
+    color: black;
     width: 100vh;
     font-size: 20px;
     
