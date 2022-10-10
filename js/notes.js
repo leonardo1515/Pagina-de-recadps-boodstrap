@@ -1,24 +1,23 @@
 const noteUs      = JSON.parse(localStorage.getItem('task'));
-const loggedUser = (sessionStorage.getItem('logged'));
+const loggedUser  = (sessionStorage.getItem('logged'));
 
 if(!loggedUser) {
     window.location.href = 'createAccount.html'
 };
-// para por nome na tela
-// const nameScreen = document.getElementById('nameOnTheScreen');
+const nameScreen = document.getElementById('nameOnTheScreen');
 const comForm   = document.getElementById('notesForm');
 const mensagem  = document.getElementById('notes');
 const descri    = document.getElementById('complement');
 const bodyTable = document.getElementById('tBody');
 
+
 let userData = noteUs.find((usuario) => {
     return usuario.email ==loggedUser
 });
+nameScreen.innerText = userData.nome
 
 window.addEventListener('load', () => {
     let tableLoad = userData.data.forEach(item => {
-        // para por nome na tela
-        // nameScreen.innerText = userData.data.name
         let data = {
             id: item.id,
             mensagems: item.mensagems,

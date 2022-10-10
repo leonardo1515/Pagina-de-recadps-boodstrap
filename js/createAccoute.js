@@ -1,6 +1,5 @@
 const form           = document.getElementById('createForm');
-// para por nome na tela
-// const nome           = document.getElementById('name');
+const nome           = document.getElementById('name');
 const createEmail    = document.getElementById('creat-email');
 const createPassword = document.getElementById('creat-password');
 const user           = JSON.parse(localStorage.getItem('task')) || []
@@ -8,7 +7,7 @@ const user           = JSON.parse(localStorage.getItem('task')) || []
 document.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    if(createEmail.value == '' || createPassword.value == '') {
+    if(createEmail.value == '' || createPassword.value == '' || nome.value == '') {
         alert('Por favor preençã os campos corretamente para proseguir');
         return;
     };
@@ -24,17 +23,11 @@ document.addEventListener('submit', (e) => {
     }
  
     const dataUser = {
+        nome: nome.value,
         email: createEmail.value,
         senha: createPassword.value,
         data: newNotes = [],
     };
-    // para por nome na tela
-    // const dataUser = {
-    //     nome:  nome.value,
-    //     email: createEmail.value,
-    //     senha: createPassword.value,
-    //     data:  newNotes = [],
-    // };
 
     user.push(dataUser);
 
