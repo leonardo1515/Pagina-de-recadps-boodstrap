@@ -1,6 +1,6 @@
 const noteUs      = JSON.parse(localStorage.getItem('task'));
 const loggedUser  = (sessionStorage.getItem('logged'));
-
+        // checa se esta logado
 if(!loggedUser) {
     window.location.href = 'createAccount.html'
 };
@@ -16,6 +16,7 @@ let userData = noteUs.find((usuario) => {
 });
 nameScreen.innerText = userData.nome
 
+             // load da pagina
 window.addEventListener('load', () => {
     let tableLoad = userData.data.forEach(item => {
         let data = {
@@ -35,6 +36,7 @@ function getDefaulNotes () {
     }
 }
 
+            // criando a tabela
 document.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -86,7 +88,7 @@ function newRow (data) {
     `
 
 };
-
+            // gerador de ID
 const generateId = (gerar) => {
     let nextId = gerar.length + 1;
 
@@ -98,9 +100,15 @@ const generateId = (gerar) => {
     }
     return nextId;
 }
-// ajeitar para não presisar dar reloade na paginaa
+
+              // excluir linha
 function excluir(id) {
     let noteUs  = JSON.parse(localStorage.getItem('task')) || getDefaulNotes();
+
+    const confirmExcluir = confirm('Tem certeza que quer excluir esta nota ?');
+    if(!confirmExcluir) {
+        return;
+    };
 
     let idLinha = userData.data.findIndex((item) => item.id == id);
     if(idLinha >= 0) {
@@ -115,9 +123,11 @@ function excluir(id) {
     localStorage.setItem('task', JSON.stringify(noteUs));
     location.reload();
     mensagem.focus();
-
+    alert('Nota excluida com sucesso.')
 };
 
+
+               // preparalção para ediatr
 let expo = 0
 function preparaEditar (id) {
     let noteUs  = JSON.parse(localStorage.getItem('task')) || getDefaulNotes();
@@ -133,6 +143,7 @@ function preparaEditar (id) {
     modalMendsag.focus();    
 };
 
+                // editar linha
 function editar (index) {
     let noteUs  = JSON.parse(localStorage.getItem('task')) || getDefaulNotes();
 
@@ -158,8 +169,11 @@ function editar (index) {
         });
     localStorage.setItem('task', JSON.stringify(noteUs));
     location.reload();
+    alert('Nota editada com sucesso.')
+
 };
 
+              // sair da pagina recados
 function exit () {
     sessionStorage.removeItem('logged');
     window.location.href = 'index.html';
