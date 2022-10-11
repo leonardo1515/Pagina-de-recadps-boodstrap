@@ -19,5 +19,29 @@ th,td{
 }
 
 .input-modal{
-    width: 65vh;
+    width: 35vh;
+}
+
+.ocult{
+    display: inline;
+}
+
+@media screen and (max-width:530px){
+    .ocult {
+        display:none;
+    }
+}
+
+.drop{
+    display: none;
+
+}
+
+@media screen and (max-width:530px){
+    .drop {
+        display:block;
+    }
+    .input-modal{
+        width: 35vh;
+    }
 }

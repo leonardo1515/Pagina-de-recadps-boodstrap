@@ -45,7 +45,7 @@ document.addEventListener('submit', (e) => {
     }
 
     const data = {
-        id: generateId(userData.data),
+        id:  Math.floor(Date.now() / 1000),
         mensagems: mensagem.value,
         descricao: descri.value,
     };
@@ -72,20 +72,55 @@ document.addEventListener('submit', (e) => {
 
 function newRow (data) {
    
+    // bodyTable.innerHTML += `
+    //     <tr>
+    //         <td>${data.mensagems}</td>
+    //         <td>${data.descricao}</td>
+    //         <td>
+    //             <button type="button" class="btn btn-danger" id="btnApaga"
+    //                 onclick="excluir(${data.id})">Excluir
+    //             </button>  
+    //             <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
+    //                 data-bs-target="#exampleModal" data-bs-whatever="@mdo" onclick="preparaEditar(${data.id})">Editar
+    //             </button>
+    //         </td>
+    //     </tr>    
+    // `
+
     bodyTable.innerHTML += `
-        <tr>
-            <td>${data.mensagems}</td>
-            <td>${data.descricao}</td>
-            <td>
-                <button type="button" class="btn btn-danger" id="btnApaga"
-                    onclick="excluir(${data.id})">Excluir
-                </button>  
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-                    data-bs-target="#exampleModal" data-bs-whatever="@mdo" onclick="preparaEditar(${data.id})">Editar
+    <tr>
+        <td>${data.mensagems}</td>
+        <td>${data.descricao}</td>
+        <td>
+            <button type="button" class="btn btn-danger ocult" id="btnApaga"
+                onclick="excluir(${data.id})">Excluir
+            </button>
+                
+            <button type="button" class="btn btn-primary ocult" data-bs-toggle="modal" 
+                data-bs-target="#exampleModal" data-bs-whatever="@mdo"
+                 onclick="preparaEditar(${data.id})">Editar
+            </button>
+               
+
+            <div class="dropdown drop">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Ações
                 </button>
-            </td>
-        </tr>    
-    `
+                <ul class="dropdown-menu dropdown-menu-dark">
+                 <li> 
+                    <button type="button" class="btn btn-danger" id="btnApaga"
+                    onclick="excluir(${data.id})">Excluir</button>
+                 </li>
+                 <li>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
+                    data-bs-target="#exampleModal" data-bs-whatever="@mdo" 
+                    onclick="preparaEditar(${data.id})">Editar</button
+                 </li>
+                </ul>
+            </div>
+        </td>
+    </tr>    
+`
 
 };
             // gerador de ID
@@ -145,23 +180,23 @@ function preparaEditar (id) {
 
                 // editar linha
 function editar (index) {
-    let noteUs  = JSON.parse(localStorage.getItem('task')) || getDefaulNotes();
+   let noteUs  = JSON.parse(localStorage.getItem('task')) || getDefaulNotes();
+   let modalMendsag = document.getElementById('edit-mensage');
+   let modalDescripition = document.getElementById('edit-descripition');
 
-    let modalMendsag = document.getElementById('edit-mensage');
-    let modalDescripition = document.getElementById('edit-descripition');
+   const confirmEdit = confirm('Tem certeza que deseja editar esta nota ?');
+   if(!confirmEdit){
+    return;
+   };
 
     if(modalMendsag.value == '' || modalDescripition.value == '') {
         alert('Porfavor preecha os campos para proseguir.');
         return;
     };
 
-    userData.data.forEach((item) => {
-        if(item.id == index+1) {
-            item.mensagems = modalMendsag.value
-            item.descricao = modalDescripition.value
-            };
-        });
-
+    userData.data[index].mensagems = modalMendsag.value;
+    userData.data[index].descricao = modalDescripition.value;
+      
     noteUs.forEach((item) => {
         if(item.email == loggedUser) {
             item.data = userData.data
@@ -169,7 +204,6 @@ function editar (index) {
         });
     localStorage.setItem('task', JSON.stringify(noteUs));
     location.reload();
-    alert('Nota editada com sucesso.')
 
 };
 
