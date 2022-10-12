@@ -10,7 +10,7 @@ const mensagem  = document.getElementById('notes');
 const descri    = document.getElementById('complement');
 const bodyTable = document.getElementById('tBody');
 
-
+            // pega o usuario logado no momento
 let userData = noteUs.find((usuario) => {
     return usuario.email ==loggedUser
 });
@@ -30,6 +30,7 @@ window.addEventListener('load', () => {
     });
 });
 
+            // arra falso para não quebarar o codigo
 function getDefaulNotes () {
     return {
         data: []
@@ -136,7 +137,7 @@ const generateId = (gerar) => {
     return nextId;
 }
 
-              // excluir linha
+            // excluir linha
 function excluir(id) {
     let noteUs  = JSON.parse(localStorage.getItem('task')) || getDefaulNotes();
 
@@ -162,7 +163,7 @@ function excluir(id) {
 };
 
 
-               // preparalção para ediatr
+            // preparalção para ediatr
 let expo = 0
 function preparaEditar (id) {
     let noteUs  = JSON.parse(localStorage.getItem('task')) || getDefaulNotes();
@@ -178,7 +179,7 @@ function preparaEditar (id) {
     modalMendsag.focus();    
 };
 
-                // editar linha
+            // editar linha
 function editar (index) {
    let noteUs  = JSON.parse(localStorage.getItem('task')) || getDefaulNotes();
    let modalMendsag = document.getElementById('edit-mensage');
@@ -207,7 +208,7 @@ function editar (index) {
 
 };
 
-              // sair da pagina recados
+            // sair da pagina recados
 function exit () {
     sessionStorage.removeItem('logged');
     window.location.href = 'index.html';
