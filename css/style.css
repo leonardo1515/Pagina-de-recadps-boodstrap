@@ -10,12 +10,13 @@ body{
   background-color: rgb(199, 191, 191);
 }
 
-.bac{
-  background-color: rgb(232,240,254);
-}
-
 .opaci{
   background: rgba(121, 119, 119, 0.7);
+  
+}
+
+.opacity{
+  animation: formopac 3s;
   
 }
 
@@ -46,4 +47,17 @@ body{
     bottom: 0px;
   }
   
+}
+
+@keyframes formopac {
+  0%{
+    opacity: 0.0;
+  }
+  20%{
+    opacity: 0.0;
+  }
+ 
+  100%{
+    opacity: 1.0;
+  }
 }
