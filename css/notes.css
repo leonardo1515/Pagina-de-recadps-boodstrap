@@ -1,8 +1,7 @@
 body{
     background-image: url(/img/img-bg.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
-    color: black;
+    background-repeat: repeat-y;
   }
 
 form{
