@@ -72,22 +72,6 @@ document.addEventListener('submit', (e) => {
 });
 
 function newRow (data) {
-   
-    // bodyTable.innerHTML += `
-    //     <tr>
-    //         <td>${data.mensagems}</td>
-    //         <td>${data.descricao}</td>
-    //         <td>
-    //             <button type="button" class="btn btn-danger" id="btnApaga"
-    //                 onclick="excluir(${data.id})">Excluir
-    //             </button>  
-    //             <button type="button" class="btn btn-primary" data-bs-toggle="modal" 
-    //                 data-bs-target="#exampleModal" data-bs-whatever="@mdo" onclick="preparaEditar(${data.id})">Editar
-    //             </button>
-    //         </td>
-    //     </tr>    
-    // `
-
     bodyTable.innerHTML += `
     <tr>
         <td>${data.mensagems}</td>
